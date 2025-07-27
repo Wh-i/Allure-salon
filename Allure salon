@@ -1,0 +1,86 @@
+import { useState } from "react"; import { Button } from "@/components/ui/button"; import { Card, CardContent } from "@/components/ui/card"; import { Input } from "@/components/ui/input"; import { Textarea } from "@/components/ui/textarea";
+
+export default function AllureSalon() { const [form, setForm] = useState({ name: "", date: "", service: "" });
+
+const handleChange = (e) => { setForm({ ...form, [e.target.name]: e.target.value }); };
+
+const handleSubmit = (e) => { e.preventDefault(); alert(Booking received for ${form.name} on ${form.date} for ${form.service}); };
+
+return ( <div className="bg-pink-50 text-gray-800 font-serif min-h-screen p-6"> <header className="text-center py-10"> <h1 className="text-5xl font-bold text-yellow-700">Allure Salon</h1> <p className="text-lg mt-2 italic">Elegance Redefined</p> </header>
+
+<section id="about" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">About Us</h2>
+    <p>
+      Located at Nani Arcade Building, First Floor Room 38, Allure Salon is your go-to beauty destination for elegant and classy hair transformations. Our team of experienced stylists ensures every client leaves with a renewed sense of beauty and confidence.
+    </p>
+  </section>
+
+  <section id="services" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">Our Services</h2>
+    <p>
+      We offer a variety of hair and beauty services tailored to your needs. Kindly contact us directly for the full price list or visit our salon for a consultation.
+    </p>
+  </section>
+
+  <section id="booking" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">Book an Appointment</h2>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input
+        placeholder="Your Name"
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="date"
+        name="date"
+        value={form.date}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        placeholder="Service (e.g., Braids)"
+        name="service"
+        value={form.service}
+        onChange={handleChange}
+        required
+      />
+      <Button className="bg-yellow-600 hover:bg-yellow-700 text-white">Book Now</Button>
+    </form>
+    <p className="mt-4 text-sm text-gray-600">Or call us directly: <span className="text-yellow-700 font-medium">0720379419</span></p>
+  </section>
+
+  <section id="gallery" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">Gallery</h2>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="bg-yellow-100 h-32 rounded-xl" />
+      <div className="bg-yellow-100 h-32 rounded-xl" />
+      <div className="bg-yellow-100 h-32 rounded-xl" />
+    </div>
+  </section>
+
+  <section id="testimonials" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">What Our Clients Say</h2>
+    <Card>
+      <CardContent className="p-4 italic">
+        “The service was exceptional and the environment was so serene. Highly recommend Allure!”
+      </CardContent>
+    </Card>
+  </section>
+
+  <section id="contact" className="max-w-3xl mx-auto mb-12">
+    <h2 className="text-3xl text-yellow-600 mb-4">Contact Us</h2>
+    <p className="mb-2">📍 Nani Arcade Building, 1st Floor Room 38</p>
+    <p className="mb-2">📞 0720379419</p>
+    <p className="mb-2">📸 Instagram: @alluresalon.ke</p>
+    <p className="mb-2">📧 Email: info@alluresalon.co.ke</p>
+  </section>
+
+  <footer className="text-center py-6 text-sm text-gray-500">
+    © {new Date().getFullYear()} Allure Salon. All rights reserved.
+  </footer>
+</div>
+
+); }
+
